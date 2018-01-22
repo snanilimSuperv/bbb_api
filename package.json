@@ -1,0 +1,23 @@
+{
+  "name": "bbb_api",
+  "version": "1.0.0",
+  "description": "bbb API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snanilimSuperv/bbb_api.git"
+  },
+  "author": "me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snanilimSuperv/bbb_api/issues"
+  },
+  "homepage": "https://github.com/snanilimSuperv/bbb_api#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
