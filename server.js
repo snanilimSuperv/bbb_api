@@ -1,4 +1,4 @@
-// ---------------------------------- Requirement Load Start ---------------------------------- // 
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Requirement Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
@@ -8,8 +8,10 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const request = require('request');
 const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
-// ---------------------------------- Requirement Load End ---------------------------------- // 
+
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Requirement Load End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 // Load environment variables from .env file
 dotenv.load();
 
@@ -21,6 +23,36 @@ mongoose.connection.on('error', function() {
 });
 
 
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Model Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
+const User = require('./models/User');
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Model Load End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
+
+
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
+const userController = require('./controllers/userController');
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Load End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
+
+
+
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Maping Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
+app.post('/signup', userController.userSignUp)
+//  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Maping End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ //
+
+
+
+// =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+// BASE64 ENCODE
+// =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+// var base64 = require('base-64');
+// var encoded = '';
+// var decoded = base64.encode(encoded);
+// var bytes = base64.decode(decoded);
+// console.log(decoded);
+// console.log(bytes);
+
+
+// =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
 app.set('port', process.env.PORT || 3000);
 app.use(compression());
