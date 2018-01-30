@@ -22,6 +22,14 @@ mongoose.connection.on('error', function() {
     process.exit(1);
 });
 
+app.set('port', process.env.PORT || 3000);
+app.use(compression());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
+app.use(cookieParser());
+
 
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Model Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 const User = require('./models/User');
@@ -35,7 +43,8 @@ const userController = require('./controllers/userController');
 
 
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Maping Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
-app.post('/signup', userController.userSignUp)
+app.post('/signup', userController.userSignUp);
+app.post('/login', userController.userLogin);
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Maping End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ //
 
 
@@ -54,13 +63,7 @@ app.post('/signup', userController.userSignUp)
 
 // =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
-app.set('port', process.env.PORT || 3000);
-app.use(compression());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressValidator());
-app.use(cookieParser());
+
 
 
 app.listen(app.get('port'), function(){
@@ -70,3 +73,4 @@ app.listen(app.get('port'), function(){
 
 
 
+module.exports = app;
