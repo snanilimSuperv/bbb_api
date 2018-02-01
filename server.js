@@ -32,12 +32,12 @@ app.use(cookieParser());
 
 
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Model Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
-const User = require('./models/User');
+const User = require('./user/models/userModel');
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Model Load End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 
 
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Load Start  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
-const userController = require('./controllers/userController');
+const userController = require('./user/controllers/userController');
 //  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ Controllers Load End  =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 
 
