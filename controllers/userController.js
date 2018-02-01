@@ -35,7 +35,6 @@ exports.userLogin = function(req, res, next){
                 'Double-check your email address and try again.'
                 });
             }else{
-                console.log(user);
                 user.comparePassword(req.body.password, function(err, isMatch) {
                     if (!isMatch) {
                       return res.status(401).send({ msg: 'Invalid email or password' });
@@ -47,11 +46,7 @@ exports.userLogin = function(req, res, next){
             }
         })
     }
-
-
 }
-
-
 
 // =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+ // 
 
